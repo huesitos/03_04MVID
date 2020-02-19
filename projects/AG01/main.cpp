@@ -5,6 +5,7 @@
 
 void onChangeFrameBufferSize(GLFWwindow* window, const int32_t width, const int32_t height) {
 	glViewport(0, 0, width, height);
+	std::cout << width << " " << height << std::endl;
 }
 
 void handleInput(GLFWwindow* window) {
