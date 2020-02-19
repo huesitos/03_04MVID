@@ -6,12 +6,15 @@
 
 #include <iostream>
 
-void onChangeFrameBufferSize(GLFWwindow* window, const int32_t width, const int32_t height) {
+void onChangeFrameBufferSize(
+	GLFWwindow* window, const int32_t width, const int32_t height) {
 	glViewport(0, 0, width, height);
 	std::cout << width << " " << height << std::endl;
 }
 
-void onKeyPress(GLFWwindow* window, int key, int scancode, int action, int mods) {
+void onKeyPress(
+	GLFWwindow* window,
+	int key, int scancode, int action, int mods) {
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
 		glfwSetWindowShouldClose(window, true);
 	}
