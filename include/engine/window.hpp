@@ -6,6 +6,9 @@ class GLFWwindow;
 class Window {
 public:
 	static Window* instance();
+	static int width;
+	static int height;
+	static const char* title;
 
 	bool alive() const;
 	void frame() const;

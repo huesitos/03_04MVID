@@ -1,0 +1,24 @@
+El triángulo se dibuja usando la siguiente data:
+
+float vertices[] = {
+  0.5f, -0.5f, 0.0f,
+  -0.5f, -0.5f, 0.0f,
+  0.0f, 0.5f, 0.0f,
+};
+
+uint32_t indices[] = {
+  0, 2, 1
+};
+
+Para pasar la posición como color desde el shader de vértices se usa el atributo de salida "myColor" y se le asigna el valor del atributo de entrada "aPos".
+myColor = aPos;
+
+Luego, para recibir ese valor en el shader de fragmentos, se recibe el atributo como un dato de entrada con el mismo nombre:
+in vec3 myColor;
+
+El atributo puede llamarse de cualquier forma, pero el nombre debe coincidir en ambos shaders para que funcione, siendo un atributo de salida en el shader de vértices y de entrada en el shader de fragmento.
+
+Luego de que termine el programa el triángulo se dibujará con el vértice del tope (a) de color verde, el de abajo a la izquierda (b) de color negro y el de abajo a la derecha (c) de color rojo. Esto se debe a que los vértices tienen colores negativos que se consideran como si fueran 0.0f al dibujarlos. Desde el vértice (a) al (c) el shader de fragmento interpola el color removiendo verde a la vez que agrega más rojo a medida que pinta cada pixel entre ellos. Desde el vértice (a) al (b), simplemente remueve el color verde y cada pixel se va haciendo cada vez más oscuro. El centro del triángulo tiene una combinación del rojo, verde y negro.
+
+
+
