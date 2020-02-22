@@ -3,6 +3,9 @@
 
 #include <iostream>
 
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 #include <engine/input.hpp>
 #include <engine/window.hpp>
 
@@ -22,12 +25,12 @@ uint32_t createVertexData(uint32_t* VBO, uint32_t* EBO) {
 	vertices[1] = 0.0f; // p2.y
 	vertices[2] = 0.0f; // p3.z
 
-	float angle = 315.0f; // drawing in clockwise direction
+	float angle = 0.0f; // drawing in clockwise direction
 	for (int i = 3; i <= sides*3; i+=3) {
-		vertices[i] = r * cosf(angle); //pi.x
-		vertices[i+1] = r * sinf(angle); //pi.y
+		vertices[i] = r * cos((angle * M_PI) / 180); //pi.x
+		vertices[i+1] = r * sin((angle * M_PI) / 180); //pi.y
 		vertices[i+2] = 0.0f; //pi.z
-		angle -= 45;
+		angle -= 60.0f;
 
 		std::cout << "point: " << i << std::endl;
 		std::cout << "x " << vertices[i] << " y " << vertices[i + 1] << " z " << vertices[i + 2] << std::endl;
